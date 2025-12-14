@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhinav Vashishth | Portfolio</title>
+    <!-- Emoji Favicon -->
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='0.9em' font-size='90'>💻</text>
+</svg>">
+
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -128,10 +134,26 @@
 
             <div class="avatar-container relative group z-10">
                 <div class="absolute inset-0 bg-accent/30 blur-[80px] rounded-full -z-10 group-hover:bg-accent2/30 transition-colors duration-500"></div>
-                <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Technologist.png" 
-                     alt="3D Developer" 
-                     class="w-64 md:w-80 h-auto object-contain drop-shadow-2xl transform transition-transform duration-500 hover:scale-105 hover:rotate-2"
-                >
+                <div class="relative w-64 md:w-80 aspect-square rounded-full overflow-hidden glass-panel group">
+    
+    <!-- REAL PHOTO -->
+    <img 
+        src="../Desktop/IMG_1236.jpg" 
+        alt="Abhinav Vashishth"
+        class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500 group-hover:opacity-0"
+    />
+
+    <!-- 3D AVATAR (fallback / hover) -->
+    <img 
+        src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Technologist.png"
+        alt="3D Developer"
+        class="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-500 group-hover:opacity-100 scale-90"
+    />
+
+    <!-- Glow Ring -->
+    <div class="absolute inset-0 rounded-full ring-2 ring-accent/30 group-hover:ring-accent2/50 transition-all"></div>
+</div>
+
             </div>
 
             <div class="absolute right-0 lg:right-10 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-12 pointer-events-none">
@@ -279,6 +301,79 @@ issues efficiently.</span></li>
         </div>
     </section>
 
+    <section id="passion" class="max-w-7xl mx-auto px-4 pb-32">
+    <h2 class="text-4xl font-bold mb-12 pl-4 border-l-4 border-accent">
+        Beyond Code - Hobbies & Passion
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+        <!-- LEFT: STORY -->
+        <div class="gs-reveal">
+            <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                While my profession revolves around designing scalable backend systems and AI workflows,
+                my passion lives in the mountains.
+            </p>
+
+            <p class="text-gray-400 leading-relaxed mb-6">
+                Through <span class="text-white font-medium">cinematic travel films</span> and
+                <span class="text-white font-medium">nature photography</span>,
+                I document stories of Himachal — silence, peace, nature and life.
+                This creative journey keeps me grounded, patient, and deeply observant —
+                qualities that reflect directly in the way I build software.
+            </p>
+
+            <p class="text-gray-500 italic">
+                ~ Code by logic. Created by heart. Shot on Iphone ~
+            </p>
+        </div>
+
+        <!-- RIGHT: CREATOR LINKS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 gs-reveal">
+
+            <!-- YOUTUBE -->
+            <a href="https://www.youtube.com/@Himachalographer" target="_blank"
+               class="glass-panel p-8 rounded-3xl group relative overflow-hidden">
+
+                <div class="absolute inset-0 bg-gradient-to-br from-red-500/20 to-transparent 
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div class="relative z-10">
+                    <i class="fab fa-youtube text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">YouTube</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Cinematic travel films & detailed storytelling from the Himalayas.
+                    </p>
+                    <span class="text-red-400 text-sm font-mono">
+                        Watch the journey →
+                    </span>
+                </div>
+            </a>
+
+            <!-- INSTAGRAM -->
+            <a href="https://www.instagram.com/himachalographer" target="_blank"
+               class="glass-panel p-8 rounded-3xl group relative overflow-hidden">
+
+                <div class="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-purple-500/20 
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div class="relative z-10">
+                    <i class="fab fa-instagram text-4xl text-pink-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Instagram</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Photography, reels & moments captured in motion.
+                    </p>
+                    <span class="text-pink-400 text-sm font-mono">
+                        Explore visuals →
+                    </span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
     <footer class="relative pt-5 pb-10 overflow-hidden border-t border-white/5 bg-black/40 backdrop-blur-xl">
         
         <div class="flex flex-col items-center justify-center mb-12 relative">
@@ -298,7 +393,7 @@ issues efficiently.</span></li>
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
                 <p class="font-bold text-xl tracking-tighter">@himachalographer</p>
-                <p class="text-sm text-gray-500 mt-1">Abhinav Vashishth &copy; 2025</p>
+                <p class="text-sm text-gray-500 mt-1">Abhinav Vashishth &copy; </p>
             </div>
 
             <div class="flex gap-8">
