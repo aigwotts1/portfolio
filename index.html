@@ -60,38 +60,61 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
-        .glass-panel:hover {
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
-            transform: translateY(-5px);
-        }
 
         /* The "Mac Dock" Navigation */
+        .dock-wrap {
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0 0.25rem;
+        }
         .dock-container {
             background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 999px;
-            padding: 0.5rem;
+            padding: 0.35rem;
             display: inline-flex;
-            gap: 0.5rem;
+            gap: 0.2rem;
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
             position: relative; z-index: 50;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
+        .dock-container::-webkit-scrollbar { display: none; }
         .dock-item {
-            padding: 0.75rem 1.5rem;
+            padding: 0.55rem 0.7rem;
             border-radius: 999px;
             color: #a1a1aa;
             font-weight: 500;
+            font-size: 0.75rem;
             transition: all 0.3s ease;
             cursor: pointer; text-decoration: none;
-            display: flex; align-items: center;
+            display: flex; align-items: center; justify-content: center;
+            white-space: nowrap;
+            flex-shrink: 0;
+            gap: 0.35rem;
         }
+        .dock-item i { margin-right: 0 !important; font-size: 0.85rem; }
+        .dock-item .dock-label { display: none; }
+        .dock-item.active .dock-label { display: inline; }
         .dock-item:hover { color: white; background: rgba(255,255,255,0.1); }
         .dock-item.active {
             background: linear-gradient(135deg, #6366f1, #d946ef);
             color: white; font-weight: 700;
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        @media (min-width: 640px) {
+            .dock-item { padding: 0.65rem 0.95rem; font-size: 0.8125rem; }
+            .dock-item .dock-label { display: inline; }
+        }
+        @media (min-width: 768px) {
+            .dock-container { padding: 0.5rem; gap: 0.5rem; }
+            .dock-item { padding: 0.75rem 1.35rem; font-size: 0.9375rem; gap: 0.5rem; }
+            .dock-item i { font-size: 1rem; }
         }
 
         /* Custom Animations */
@@ -113,15 +136,137 @@
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+
+        /* LinkedIn Activity carousel */
+        .activity-track {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 0.5rem 1rem 1.25rem;
+            margin: 0 -1rem;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        @media (min-width: 768px) {
+            .activity-track {
+                gap: 1.25rem;
+                padding: 0.5rem 0.25rem 1.25rem;
+                margin: 0;
+            }
+        }
+        .activity-track::-webkit-scrollbar { display: none; }
+        .activity-card {
+            flex: 0 0 min(300px, calc(100vw - 2.5rem));
+            scroll-snap-align: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        @media (min-width: 640px) {
+            .activity-card {
+                flex: 0 0 min(340px, 85vw);
+                scroll-snap-align: start;
+            }
+        }
+        @media (hover: hover) {
+            .activity-card:hover {
+                border-color: rgba(10, 102, 194, 0.45);
+                transform: translateY(-4px);
+                box-shadow: 0 12px 40px rgba(10, 102, 194, 0.15);
+            }
+            .glass-panel:hover {
+                border-color: rgba(99, 102, 241, 0.3);
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+                transform: translateY(-5px);
+            }
+        }
+        .activity-media {
+            height: 160px;
+            position: relative;
+            overflow: hidden;
+        }
+        @media (min-width: 640px) {
+            .activity-media { height: 200px; }
+        }
+        .activity-tab {
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #a1a1aa;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+        @media (min-width: 640px) {
+            .activity-tab { padding: 0.45rem 1.1rem; font-size: 0.875rem; }
+        }
+        .activity-tab:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+        .activity-tab.active {
+            background: #0a66c2;
+            border-color: #0a66c2;
+            color: #fff;
+        }
+        .activity-nav-btn {
+            width: 42px; height: 42px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(12px);
+        }
+        .activity-nav-btn:hover {
+            background: #0a66c2;
+            border-color: #0a66c2;
+        }
+        .activity-nav-btn:disabled {
+            opacity: 0.35;
+            cursor: default;
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.08);
+        }
+        .activity-swipe-hint {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            color: #71717a;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        @media (min-width: 640px) {
+            .activity-swipe-hint { display: none; }
+        }
+
+        /* Mobile section / card spacing */
+        @media (max-width: 639px) {
+            .glass-panel:hover { transform: none; }
+            .section-pad { padding-left: 1rem; padding-right: 1rem; }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-accent selection:text-white">
 
     <div id="canvas-container"></div>
 
-    <section class="min-h-screen flex flex-col justify-center items-center px-4 relative pt-10 pb-20 overflow-hidden">
+    <section class="min-h-[100svh] flex flex-col justify-center items-center px-4 relative pt-8 pb-16 sm:pt-10 sm:pb-20 overflow-hidden">
         
-        <div id ="portfolio" class="relative w-full max-w-5xl mx-auto flex justify-center items-center mb-10">
+        <div id="portfolio" class="relative w-full max-w-5xl mx-auto flex justify-center items-center mb-6 sm:mb-10">
             
             <div class="absolute left-0 lg:left-10 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-12 pointer-events-none">
                 <div class="glass-panel p-5 rounded-2xl animate-float-slow bg-orange-500/5 border-orange-500/20">
@@ -134,7 +279,7 @@
 
             <div class="avatar-container relative group z-10">
                 <div class="absolute inset-0 bg-accent/30 blur-[80px] rounded-full -z-10 group-hover:bg-accent2/30 transition-colors duration-500"></div>
-                <div class="relative w-64 md:w-80 aspect-square rounded-full overflow-hidden glass-panel group">
+                <div class="relative w-48 sm:w-64 md:w-80 aspect-square rounded-full overflow-hidden glass-panel group">
     
     <!-- REAL PHOTO -->
     <img 
@@ -166,44 +311,47 @@
             </div>
         </div>
 
-        <div class="text-center z-10 max-w-4xl mb-12 relative">
-            <h1 class="text-5xl md:text-8xl font-bold tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
+        <div class="text-center z-10 max-w-4xl mb-8 sm:mb-12 relative px-1">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40 leading-[1.05]">
                 Abhinav Vashishth
             </h1>
-            <p class="text-xl md:text-2xl text-gray-400 font-light">
-                Architecting <span class="text-accent font-medium">Scalable Backends</span> & <span class="text-accent2 font-medium">AI Workflows</span>
+            <p class="text-base sm:text-xl md:text-2xl text-gray-400 font-light leading-relaxed px-1">
+                Architecting <span class="text-accent font-medium">Scalable Backends</span> &amp; <span class="text-accent2 font-medium">AI Workflows</span>
             </p>
         </div>
 
-        <div class="dock-container mb-8">
-            <a href="#experience" class="dock-item hover:text-white"><i class="fas fa-layer-group mr-2"></i>Experience</a>
-            <a href="#portfolio" class="dock-item active"><i class="fas fa-briefcase mr-2"></i>Portfolio</a>
-            <a href="#projects" class="dock-item hover:text-white"><i class="fas fa-code mr-2"></i>Projects</a>
+        <div class="dock-wrap mb-6 sm:mb-8">
+            <nav class="dock-container" aria-label="Primary">
+                <a href="#experience" class="dock-item hover:text-white" title="Experience"><i class="fas fa-layer-group"></i><span class="dock-label">Experience</span></a>
+                <a href="#portfolio" class="dock-item active" title="Portfolio"><i class="fas fa-briefcase"></i><span class="dock-label">Portfolio</span></a>
+                <a href="#projects" class="dock-item hover:text-white" title="Projects"><i class="fas fa-code"></i><span class="dock-label">Projects</span></a>
+                <a href="#activity" class="dock-item hover:text-white" title="Activity"><i class="fab fa-linkedin"></i><span class="dock-label">Activity</span></a>
+            </nav>
         </div>
         
-        <div class="animate-bounce opacity-50 mt-4">
+        <div class="animate-bounce opacity-50 mt-2 sm:mt-4">
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <section id="experience" class="max-w-7xl mx-auto px-4 py-20">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <section id="experience" class="max-w-7xl mx-auto px-4 py-12 sm:py-16 md:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
             
-            <div class="lg:col-span-4 space-y-6">
-                <div class="glass-panel p-8 rounded-3xl gs-reveal">
+            <div class="lg:col-span-4 space-y-4 sm:space-y-6">
+                <div class="glass-panel p-5 sm:p-8 rounded-2xl sm:rounded-3xl gs-reveal">
                     <h3 class="text-gray-500 uppercase text-xs tracking-widest mb-2">Total Experience</h3>
-                    <div class="text-5xl font-bold mb-2">3+ Years</div>
+                    <div class="text-4xl sm:text-5xl font-bold mb-2">3+ Years</div>
                     <p class="text-sm text-gray-400">Backend Dev</p>
                 </div>
                 
-                <div class="glass-panel p-8 rounded-3xl gs-reveal relative overflow-hidden">
+                <div class="glass-panel p-5 sm:p-8 rounded-2xl sm:rounded-3xl gs-reveal relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-green-500 blur-[60px] opacity-20"></div>
                     <h3 class="text-gray-500 uppercase text-xs tracking-widest mb-2">Optimization Improvement in Client Project</h3>
-                    <div class="text-5xl font-bold mb-2 text-green-400">60%</div>
+                    <div class="text-4xl sm:text-5xl font-bold mb-2 text-green-400">60%</div>
                     <p class="text-sm text-gray-400">Increase in API data access speed.</p>
                 </div>
 
-                <div id="stack" class="glass-panel p-8 rounded-3xl gs-reveal">
+                <div id="stack" class="glass-panel p-5 sm:p-8 rounded-2xl sm:rounded-3xl gs-reveal">
                     <h3 class="text-gray-500 uppercase text-xs tracking-widest mb-4">Tech Arsenal</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-white/5 rounded-lg border border-white/10 text-xs">Java</span>
@@ -223,38 +371,37 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-8 space-y-6">
+            <div class="lg:col-span-8 space-y-4 sm:space-y-6">
                 
-                <div class="glass-panel p-8 rounded-3xl gs-reveal group">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                <div class="glass-panel p-5 sm:p-8 rounded-2xl sm:rounded-3xl gs-reveal group">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 sm:mb-6 gap-2">
                         <div>
-                            <h3 class="text-2xl font-bold group-hover:text-accent transition-colors">Software Engineer</h3>
-                            <span class="text-gray-400">MultiOps IT Solutions</span>
+                            <h3 class="text-xl sm:text-2xl font-bold group-hover:text-accent transition-colors">Software Engineer</h3>
+                            <span class="text-gray-400 text-sm sm:text-base">MultiOps IT Solutions</span>
                         </div>
-                        <span class="px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-mono mt-2 md:mt-0">Oct 2023 - Present</span>
+                        <span class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/10 text-accent text-xs sm:text-sm font-mono">Oct 2023 - Present</span>
                     </div>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-accent"></i><span>Designed scalable RESTful services using Spring Boot.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-accent"></i><span>Re-engineered data migration processes, enabling automated jobs for real-time notifications.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-accent"></i><span>Collaborated on frontend integrations using React.js.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-accent"></i><span>Tickets Management via ClickUp and participated in daily client calls to capture requirements and resolve
-issues efficiently.</span></li>
+                    <ul class="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base">
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-accent shrink-0"></i><span>Designed scalable RESTful services using Spring Boot.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-accent shrink-0"></i><span>Re-engineered data migration processes, enabling automated jobs for real-time notifications.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-accent shrink-0"></i><span>Collaborated on frontend integrations using React.js.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-accent shrink-0"></i><span>Tickets Management via ClickUp and participated in daily client calls to capture requirements and resolve issues efficiently.</span></li>
                         
                     </ul>
                 </div>
 
-                <div class="glass-panel p-8 rounded-3xl gs-reveal group">
-                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                <div class="glass-panel p-5 sm:p-8 rounded-2xl sm:rounded-3xl gs-reveal group">
+                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 sm:mb-6 gap-2">
                         <div>
-                            <h3 class="text-2xl font-bold group-hover:text-accent transition-colors">Junior Software Engineer</h3>
-                            <span class="text-gray-400">EPAM Systems (Internship)</span>
+                            <h3 class="text-xl sm:text-2xl font-bold group-hover:text-accent transition-colors">Junior Software Engineer</h3>
+                            <span class="text-gray-400 text-sm sm:text-base">EPAM Systems (Internship)</span>
                         </div>
-                        <span class="px-4 py-2 rounded-full bg-white/5 text-gray-400 text-sm font-mono mt-2 md:mt-0">Jan 2023 - Jun 2023</span>
+                        <span class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 text-gray-400 text-xs sm:text-sm font-mono">Jan 2023 - Jun 2023</span>
                     </div>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-gray-600"></i><span>Developed enterprise Java apps (Monolithic & Microservices).</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-gray-600"></i><span>Implemented AWS services and multithreading solutions.</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-gray-600"></i><span>Built unit tests with JUnit 5 and applied SOLID principles for clean, maintainable code. </span></li>
+                    <ul class="space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base">
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-gray-600 shrink-0"></i><span>Developed enterprise Java apps (Monolithic &amp; Microservices).</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-gray-600 shrink-0"></i><span>Implemented AWS services and multithreading solutions.</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-gray-600 shrink-0"></i><span>Built unit tests with JUnit 5 and applied SOLID principles for clean, maintainable code.</span></li>
                         
                     </ul>
                 </div>
@@ -263,35 +410,35 @@ issues efficiently.</span></li>
         </div>
     </section>
 
-    <section id="projects" class="max-w-7xl mx-auto px-4 pb-32">
-        <h2 class="text-4xl font-bold mb-12 pl-4 border-l-4 border-accent">Featured Projects</h2>
+    <section id="projects" class="max-w-7xl mx-auto px-4 pb-16 sm:pb-24 md:pb-32">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 pl-4 border-l-4 border-accent">Featured Projects</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
             
-            <div class="glass-panel p-1 rounded-[24px] relative group overflow-hidden gs-reveal">
+            <div class="glass-panel p-1 rounded-[20px] sm:rounded-[24px] relative group overflow-hidden gs-reveal">
                 <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative bg-[#0a0a0a] rounded-[22px] p-8 h-full flex flex-col">
-                    <div class="mb-6 flex justify-between items-center">
+                <div class="relative bg-[#0a0a0a] rounded-[18px] sm:rounded-[22px] p-5 sm:p-8 h-full flex flex-col">
+                    <div class="mb-4 sm:mb-6 flex justify-between items-center">
                         <div class="p-3 rounded-full bg-accent/10 text-accent"><i class="fas fa-network-wired text-xl"></i></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Nextgen IoT Platform</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-2">Nextgen IoT Platform</h3>
                     <p class="text-sm text-gray-500 mb-4">Spring Boot • PostgreSQL • Docker</p>
-                    <p class="text-gray-400 mb-6 flex-grow">Enterprise-grade IoT platform managing device-gateway mappings across buildings. Features automated health checks and Keycloak security for user login and registration. Dealt with million of measurement and the PostgreSQL DB Optimization Operations. Handled Project Migrations from Old Portal Made with Groovy to new Portal Made with Java Spring-Boot and created Job Schedulers for Various Process Workflows.<br> ~ A German Client Project.</p>
+                    <p class="text-gray-400 mb-6 flex-grow text-sm sm:text-base">Enterprise-grade IoT platform managing device-gateway mappings across buildings. Features automated health checks and Keycloak security for user login and registration. Dealt with million of measurement and the PostgreSQL DB Optimization Operations. Handled Project Migrations from Old Portal Made with Groovy to new Portal Made with Java Spring-Boot and created Job Schedulers for Various Process Workflows.<br> ~ A German Client Project.</p>
                     <div class="border-t border-white/10 pt-4 flex gap-4 text-sm text-gray-500">
                         <span><i class="fas fa-server mr-2"></i>Java-SpringBoot Backend</span>
                     </div>
                 </div>
             </div>
 
-            <div class="glass-panel p-1 rounded-[24px] relative group overflow-hidden gs-reveal">
+            <div class="glass-panel p-1 rounded-[20px] sm:rounded-[24px] relative group overflow-hidden gs-reveal">
                 <div class="absolute inset-0 bg-gradient-to-br from-accent2/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative bg-[#0a0a0a] rounded-[22px] p-8 h-full flex flex-col">
-                    <div class="mb-6 flex justify-between items-center">
+                <div class="relative bg-[#0a0a0a] rounded-[18px] sm:rounded-[22px] p-5 sm:p-8 h-full flex flex-col">
+                    <div class="mb-4 sm:mb-6 flex justify-between items-center">
                         <div class="p-3 rounded-full bg-accent2/10 text-accent2"><i class="fas fa-robot text-xl"></i></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">AI News Headlines Bot</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-2">AI News Headlines Bot</h3>
                     <p class="text-sm text-gray-500 mb-4">Python • Hugging Face • GenAI</p>
-                    <p class="text-gray-400 mb-6 flex-grow">Automated pipeline transforming news text into images and videos using AI models. Scrapped News with Beautiful Soup Library, used various diffusion models such as Hugging-Face to create images and videos for the news post. Auto-generated caption via Gemini Model and auto upload on social media process was made to reduce the slow lifecycle of manual uploads on social media handles.<br> ~ An AI Learning Self Project.</p>
+                    <p class="text-gray-400 mb-6 flex-grow text-sm sm:text-base">Automated pipeline transforming news text into images and videos using AI models. Scrapped News with Beautiful Soup Library, used various diffusion models such as Hugging-Face to create images and videos for the news post. Auto-generated caption via Gemini Model and auto upload on social media process was made to reduce the slow lifecycle of manual uploads on social media handles.<br> ~ An AI Learning Self Project.</p>
                     <div class="border-t border-white/10 pt-4 flex gap-4 text-sm text-gray-500">
                         <span><i class="fas fa-magic mr-2"></i>Generative AI</span>
                     </div>
@@ -301,16 +448,58 @@ issues efficiently.</span></li>
         </div>
     </section>
 
-    <section id="passion" class="max-w-7xl mx-auto px-4 pb-32">
-    <h2 class="text-4xl font-bold mb-12 pl-4 border-l-4 border-accent">
-        Beyond Code - Hobbies & Passion
+    <!-- LinkedIn Activity -->
+    <section id="activity" class="max-w-7xl mx-auto px-4 pb-16 sm:pb-24 md:pb-32">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-6 sm:mb-8 gs-reveal">
+            <div>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-2 pl-4 border-l-4 border-[#0a66c2]">Activity</h2>
+                <a href="https://www.linkedin.com/in/abhinavvashishth" target="_blank" rel="noopener"
+                   class="pl-5 text-[#0a66c2] hover:underline text-sm font-medium">
+                    1,494 followers
+                </a>
+            </div>
+            <a href="https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/" target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#0a66c2] text-white text-sm font-semibold hover:bg-[#004182] transition-colors">
+                <i class="fab fa-linkedin"></i>
+                View on LinkedIn
+            </a>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4 sm:mb-6 gs-reveal">
+            <div class="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none" id="activity-tabs" style="scrollbar-width:none">
+                <button type="button" class="activity-tab active" data-filter="posts">Posts</button>
+                <button type="button" class="activity-tab" data-filter="articles">Articles</button>
+                <button type="button" class="activity-tab" data-filter="images">Images</button>
+            </div>
+            <div class="hidden sm:flex gap-2 shrink-0">
+                <button type="button" class="activity-nav-btn" id="activity-prev" aria-label="Previous posts">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button type="button" class="activity-nav-btn" id="activity-next" aria-label="Next posts">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <p class="activity-swipe-hint"><i class="fas fa-hand-pointer"></i> Swipe to browse posts</p>
+
+        <div class="relative gs-reveal">
+            <div class="activity-track" id="activity-track">
+                <!-- Cards rendered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="passion" class="max-w-7xl mx-auto px-4 pb-16 sm:pb-24 md:pb-32">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 pl-4 border-l-4 border-accent">
+        Beyond Code - Hobbies &amp; Passion
     </h2>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
 
         <!-- LEFT: STORY -->
         <div class="gs-reveal">
-            <p class="text-lg text-gray-300 leading-relaxed mb-6">
+            <p class="text-base sm:text-lg text-gray-300 leading-relaxed mb-6">
                 While my profession revolves around designing scalable backend systems and AI workflows,
                 my passion lives in the mountains.
             </p>
@@ -329,12 +518,12 @@ issues efficiently.</span></li>
         </div>
 
         <!-- RIGHT: CREATOR LINKS -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start gs-reveal">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 items-start gs-reveal">
 
 
             <!-- YOUTUBE -->
             <a href="https://www.youtube.com/@Himachalographer" target="_blank"
-               class="glass-panel p-8 rounded-3xl group relative overflow-hidden">
+               class="glass-panel p-5 sm:p-8 rounded-2xl sm:rounded-3xl group relative overflow-hidden">
 
                 <div class="absolute inset-0 bg-gradient-to-br from-red-500/20 to-transparent 
                             opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -353,7 +542,7 @@ issues efficiently.</span></li>
 
             <!-- INSTAGRAM -->
             <a href="https://www.instagram.com/himachalographer" target="_blank"
-               class="glass-panel p-8 rounded-3xl group relative overflow-hidden">
+               class="glass-panel p-5 sm:p-8 rounded-2xl sm:rounded-3xl group relative overflow-hidden">
 
                 <div class="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-purple-500/20 
                             opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -372,7 +561,7 @@ issues efficiently.</span></li>
 
             <!-- SHOOT BOOKING WEBSITE -->
 <a href="https://himachalographer.netlify.app" target="_blank"
-   class="glass-panel p-8 rounded-3xl group relative overflow-hidden">
+   class="glass-panel p-5 sm:p-8 rounded-2xl sm:rounded-3xl group relative overflow-hidden">
 
     <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 
                 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -391,7 +580,7 @@ issues efficiently.</span></li>
 
 <!-- CREATIVE ORIGINS -->
 <a href="https://aigwotts1.github.io" target="_blank"
-   class="glass-panel p-8 rounded-3xl group relative overflow-hidden">
+   class="glass-panel p-5 sm:p-8 rounded-2xl sm:rounded-3xl group relative overflow-hidden">
 
     <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 
                 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -415,18 +604,18 @@ issues efficiently.</span></li>
 </section>
 
 
-    <footer class="relative pt-5 pb-10 overflow-hidden border-t border-white/5 bg-black/40 backdrop-blur-xl">
+    <footer class="relative pt-5 pb-8 sm:pb-10 overflow-hidden border-t border-white/5 bg-black/40 backdrop-blur-xl">
         
-        <div class="flex flex-col items-center justify-center mb-12 relative">
+        <div class="flex flex-col items-center justify-center mb-8 sm:mb-12 relative px-4">
             <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand%20Medium-Light%20Skin%20Tone.png" 
                  alt="Waving Goodbye" 
-                 class="w-32 h-32 object-contain animate-bounce-slow mb-4 drop-shadow-2xl"
+                 class="w-24 h-24 sm:w-32 sm:h-32 object-contain animate-bounce-slow mb-4 drop-shadow-2xl"
             >
             <div class="px-4 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono tracking-widest uppercase mb-6 flex items-center gap-2">
                 System Offline
             </div>
 
-            <h2 class="text-3xl md:text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-gray-600">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-gray-600">
                 Thanks for scrolling.
             </h2>
         </div>
@@ -437,7 +626,7 @@ issues efficiently.</span></li>
                 <p class="text-sm text-gray-500 mt-1">Abhinav Vashishth &copy; </p>
             </div>
 
-            <div class="flex gap-8">
+            <div class="flex gap-6 sm:gap-8">
                 <a href="https://www.youtube.com/@Himachalographer" class="text-gray-400 hover:text-[#0077b5] transition-transform hover:-translate-y-1 text-2xl"><i class="fab fa-youtube"></i></a>
                 
                 <a href="https://www.linkedin.com/in/abhinavvashishth" class="text-gray-400 hover:text-[#0077b5] transition-transform hover:-translate-y-1 text-2xl"><i class="fab fa-linkedin"></i></a>
@@ -536,6 +725,208 @@ issues efficiently.</span></li>
                 this.classList.add('active');
             });
         });
+
+        // --- LINKEDIN ACTIVITY ---
+        // Edit this array to add/update your LinkedIn posts.
+        // type: "posts" | "articles" | "images"
+        const linkedInPosts = [
+            {
+                type: "posts",
+                time: "6m",
+                text: "Cursor Start vs ChatGPT Plus: My Honest Experience After Using It on a Real Project",
+                likes: 11,
+                comments: 2,
+                impressions: "223",
+                url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
+                media: {
+                    kind: "compare",
+                    title: "Cursor Start vs ChatGPT Plus",
+                    left: "Cursor Start",
+                    right: "ChatGPT Plus",
+                    badge: "Real Project Review"
+                }
+            },
+            {
+                type: "images",
+                time: "6d",
+                text: "🥳 Excited to share a new milestone! I've completed the IBM Java Developer Professional Certificate on Coursera.",
+                likes: 24,
+                comments: 5,
+                impressions: "412",
+                url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
+                media: {
+                    kind: "certificate",
+                    title: "IBM Java Developer",
+                    subtitle: "Professional Certificate · Coursera",
+                    issuer: "IBM"
+                }
+            },
+            {
+                type: "posts",
+                time: "2w",
+                text: "Building scalable backend systems taught me one thing — clean architecture isn't optional when your APIs serve millions of measurements.",
+                likes: 18,
+                comments: 3,
+                impressions: "356",
+                url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
+                media: {
+                    kind: "insight",
+                    title: "Backend at Scale",
+                    subtitle: "Spring Boot · PostgreSQL · IoT",
+                    icon: "fa-server"
+                }
+            },
+            {
+                type: "articles",
+                time: "1mo",
+                text: "From EPAM to MultiOps — lessons from shipping enterprise Java services, GenAI pipelines, and production-ready APIs.",
+                likes: 31,
+                comments: 7,
+                impressions: "890",
+                url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
+                media: {
+                    kind: "insight",
+                    title: "Engineering Journey",
+                    subtitle: "3+ Years · Java · GenAI · Cloud",
+                    icon: "fa-route"
+                }
+            }
+        ];
+
+        const mediaHTML = (media) => {
+            if (media.kind === "compare") {
+                return `
+                    <div class="activity-media bg-gradient-to-br from-[#0a1628] via-[#0d2137] to-[#1a0a2e] p-5 flex flex-col justify-between">
+                        <span class="text-[10px] uppercase tracking-widest text-[#0a66c2] font-semibold">${media.badge}</span>
+                        <div>
+                            <p class="text-lg font-bold leading-snug mb-4">${media.title}</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="rounded-lg bg-white/5 border border-white/10 p-3 text-center">
+                                    <i class="fas fa-code text-accent mb-1"></i>
+                                    <p class="text-xs font-medium">${media.left}</p>
+                                </div>
+                                <div class="rounded-lg bg-white/5 border border-white/10 p-3 text-center">
+                                    <i class="fas fa-robot text-accent2 mb-1"></i>
+                                    <p class="text-xs font-medium">${media.right}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            }
+            if (media.kind === "certificate") {
+                return `
+                    <div class="activity-media bg-gradient-to-br from-[#0f172a] to-[#1e3a5f] p-5 flex flex-col justify-center items-center text-center">
+                        <div class="w-14 h-14 rounded-full bg-[#0a66c2]/20 border border-[#0a66c2]/40 flex items-center justify-center mb-3">
+                            <i class="fas fa-certificate text-2xl text-[#60a5fa]"></i>
+                        </div>
+                        <p class="text-[10px] uppercase tracking-widest text-blue-300/80 mb-1">${media.issuer}</p>
+                        <p class="text-lg font-bold">${media.title}</p>
+                        <p class="text-xs text-gray-400 mt-1">${media.subtitle}</p>
+                    </div>`;
+            }
+            return `
+                <div class="activity-media bg-gradient-to-br from-accent/20 to-accent2/10 p-5 flex flex-col justify-center">
+                    <i class="fas ${media.icon || 'fa-lightbulb'} text-3xl text-accent mb-3"></i>
+                    <p class="text-xl font-bold">${media.title}</p>
+                    <p class="text-sm text-gray-400 mt-1">${media.subtitle}</p>
+                </div>`;
+        };
+
+        const renderActivityCards = (filter = "posts") => {
+            const track = document.getElementById("activity-track");
+            const items = filter === "posts"
+                ? linkedInPosts.filter(p => p.type === "posts" || p.type === "images")
+                : linkedInPosts.filter(p => p.type === filter);
+
+            if (!items.length) {
+                track.innerHTML = `
+                    <div class="w-full py-16 text-center text-gray-500">
+                        <i class="fab fa-linkedin text-3xl mb-3 opacity-40"></i>
+                        <p>No ${filter} to show yet.</p>
+                    </div>`;
+                return;
+            }
+
+            track.innerHTML = items.map(post => `
+                <a href="${post.url}" target="_blank" rel="noopener" class="activity-card group">
+                    <div class="p-4 flex items-start gap-3">
+                        <img src="IMG_1236.jpg" alt="Abhinav Vashishth"
+                             class="w-11 h-11 rounded-full object-cover ring-2 ring-white/10 shrink-0">
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-1.5">
+                                <span class="font-semibold text-sm truncate">Abhinav Vashishth</span>
+                                <i class="fab fa-linkedin text-[#0a66c2] text-xs"></i>
+                            </div>
+                            <p class="text-xs text-gray-500 truncate">Software Engineer · AI Enthusiast · Java</p>
+                            <p class="text-[11px] text-gray-600 mt-0.5 flex items-center gap-1">
+                                ${post.time} · <i class="fas fa-globe-americas text-[10px]"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="px-4 text-sm text-gray-300 leading-relaxed line-clamp-3 mb-3">
+                        ${post.text}
+                        <span class="text-gray-500">… more</span>
+                    </p>
+                    ${mediaHTML(post.media)}
+                    <div class="px-4 py-3 flex items-center justify-between text-gray-500 text-sm border-t border-white/5 mt-auto">
+                        <div class="flex items-center gap-4">
+                            <span class="flex items-center gap-1.5 hover:text-[#0a66c2] transition-colors">
+                                <i class="far fa-thumbs-up"></i>
+                                <span class="text-xs">${post.likes}</span>
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <i class="far fa-comment"></i>
+                                <span class="text-xs">${post.comments}</span>
+                            </span>
+                            <i class="fas fa-retweet"></i>
+                            <i class="far fa-paper-plane"></i>
+                        </div>
+                    </div>
+                    <div class="px-4 py-2.5 flex items-center justify-between text-xs border-t border-white/5 bg-white/[0.02]">
+                        <span class="text-gray-500 flex items-center gap-1.5">
+                            <i class="fas fa-chart-simple"></i> ${post.impressions} impressions
+                        </span>
+                        <span class="text-[#0a66c2] font-medium group-hover:underline">View on LinkedIn</span>
+                    </div>
+                </a>
+            `).join("");
+
+            updateActivityNav();
+        };
+
+        const activityTrack = document.getElementById("activity-track");
+        const activityPrev = document.getElementById("activity-prev");
+        const activityNext = document.getElementById("activity-next");
+
+        const updateActivityNav = () => {
+            if (!activityTrack) return;
+            const maxScroll = activityTrack.scrollWidth - activityTrack.clientWidth;
+            activityPrev.disabled = activityTrack.scrollLeft <= 4;
+            activityNext.disabled = activityTrack.scrollLeft >= maxScroll - 4;
+        };
+
+        activityPrev?.addEventListener("click", () => {
+            const step = Math.min(360, activityTrack.clientWidth * 0.85);
+            activityTrack.scrollBy({ left: -step, behavior: "smooth" });
+        });
+        activityNext?.addEventListener("click", () => {
+            const step = Math.min(360, activityTrack.clientWidth * 0.85);
+            activityTrack.scrollBy({ left: step, behavior: "smooth" });
+        });
+        activityTrack?.addEventListener("scroll", updateActivityNav);
+        window.addEventListener("resize", updateActivityNav);
+
+        document.querySelectorAll("#activity-tabs .activity-tab").forEach(tab => {
+            tab.addEventListener("click", () => {
+                document.querySelectorAll("#activity-tabs .activity-tab").forEach(t => t.classList.remove("active"));
+                tab.classList.add("active");
+                renderActivityCards(tab.dataset.filter);
+                activityTrack.scrollTo({ left: 0 });
+            });
+        });
+
+        renderActivityCards("posts");
+
         // --- EMAIL COPY FUNCTION ---
 function handleEmailClick(e) {
     // 1. Copy to Clipboard
