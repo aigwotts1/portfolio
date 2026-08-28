@@ -414,18 +414,65 @@
         <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 pl-4 border-l-4 border-accent">Featured Projects</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
-            
+
+            <article class="glass-panel p-1 rounded-[20px] sm:rounded-[24px] relative group overflow-hidden gs-reveal md:col-span-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-cyan-500/10 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-[#0a0a0a] rounded-[18px] sm:rounded-[22px] p-5 sm:p-8 lg:p-10 h-full overflow-hidden">
+                    <div class="absolute -right-16 -top-20 w-64 h-64 rounded-full bg-emerald-400/10 blur-3xl group-hover:bg-emerald-400/20 transition-colors duration-500"></div>
+                    <a href="https://quickdevbase.in" target="_blank" rel="noopener noreferrer"
+                       aria-label="Open the live QuickDevBase website"
+                       class="relative z-10 block mb-7 sm:mb-9 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-[#f5efe4] shadow-2xl shadow-black/40 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                        <img src="quickdevbase-banner.png"
+                             alt="QuickDevBase homepage showing its developer learning paths"
+                             width="1872" height="858" loading="lazy"
+                             class="block w-full h-auto transition-transform duration-700 group-hover:scale-[1.01]">
+                        <span class="absolute right-3 bottom-3 sm:right-5 sm:bottom-5 inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-semibold shadow-lg">
+                            View live site <i class="fas fa-arrow-up-right-from-square text-emerald-400"></i>
+                        </span>
+                    </a>
+                    <div class="relative z-10 grid lg:grid-cols-[1.4fr_0.6fr] gap-8 lg:gap-12 items-end">
+                        <div>
+                            <div class="flex flex-wrap items-center gap-3 mb-5 sm:mb-6">
+                                <div class="p-3 rounded-full bg-emerald-400/10 text-emerald-400"><i class="fas fa-layer-group text-xl"></i></div>
+                                <span class="px-3 py-1 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300 text-xs font-mono uppercase tracking-wider">Latest Project</span>
+                                <span class="flex items-center gap-2 text-xs text-gray-400 font-mono"><i class="fas fa-circle text-[7px] text-emerald-400"></i> Live</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 group-hover:text-emerald-300 transition-colors">QuickDevBase</h3>
+                            <p class="text-sm text-emerald-400/80 mb-4 font-mono">Developer Learning &bull; AI Retrieval &bull; Knowledge Platform</p>
+                            <p class="text-gray-300 mb-6 text-sm sm:text-base leading-relaxed max-w-3xl">
+                                A scannable developer knowledge platform that turns complex technologies into plain-English mental models, practical examples, and clear paths to official documentation. Includes focused Java, Docker, Python, SQL, and AI curricula, plus grounded topic discovery from questions and screenshots with progress that syncs across sessions.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs sm:text-sm text-gray-400">
+                                <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10">5 learning tracks</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10">Grounded discovery</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10">Official sources</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10">Synced progress</span>
+                            </div>
+                        </div>
+                        <div class="lg:text-right">
+                            <a href="https://quickdevbase.in" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center justify-center gap-3 w-full lg:w-auto px-6 py-3.5 rounded-full bg-emerald-400 text-black font-semibold hover:bg-emerald-300 transition-all hover:-translate-y-1">
+                                Explore QuickDevBase <i class="fas fa-arrow-up-right-from-square text-sm"></i>
+                            </a>
+                            <p class="mt-3 text-xs text-gray-600 font-mono">quickdevbase.in</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
             <div class="glass-panel p-1 rounded-[20px] sm:rounded-[24px] relative group overflow-hidden gs-reveal">
                 <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div class="relative bg-[#0a0a0a] rounded-[18px] sm:rounded-[22px] p-5 sm:p-8 h-full flex flex-col">
                     <div class="mb-4 sm:mb-6 flex justify-between items-center">
                         <div class="p-3 rounded-full bg-accent/10 text-accent"><i class="fas fa-network-wired text-xl"></i></div>
+                        <span class="px-3 py-1 rounded-full border border-amber-400/20 bg-amber-400/10 text-amber-300 text-[11px] font-mono uppercase tracking-wider">Private Client Project</span>
                     </div>
                     <h3 class="text-xl sm:text-2xl font-bold mb-2">Nextgen IoT Platform</h3>
                     <p class="text-sm text-gray-500 mb-4">Spring Boot • PostgreSQL • Docker</p>
                     <p class="text-gray-400 mb-6 flex-grow text-sm sm:text-base">Enterprise-grade IoT platform managing device-gateway mappings across buildings. Features automated health checks and Keycloak security for user login and registration. Dealt with million of measurement and the PostgreSQL DB Optimization Operations. Handled Project Migrations from Old Portal Made with Groovy to new Portal Made with Java Spring-Boot and created Job Schedulers for Various Process Workflows.<br> ~ A German Client Project.</p>
-                    <div class="border-t border-white/10 pt-4 flex gap-4 text-sm text-gray-500">
+                    <div class="border-t border-white/10 pt-4 flex flex-col gap-2 text-sm text-gray-500">
                         <span><i class="fas fa-server mr-2"></i>Java-SpringBoot Backend</span>
+                        <span class="text-xs text-amber-300/70"><i class="fas fa-lock mr-2"></i>Public links are not shared due to client confidentiality.</span>
                     </div>
                 </div>
             </div>
@@ -435,12 +482,14 @@
                 <div class="relative bg-[#0a0a0a] rounded-[18px] sm:rounded-[22px] p-5 sm:p-8 h-full flex flex-col">
                     <div class="mb-4 sm:mb-6 flex justify-between items-center">
                         <div class="p-3 rounded-full bg-accent2/10 text-accent2"><i class="fas fa-robot text-xl"></i></div>
+                        <span class="px-3 py-1 rounded-full border border-purple-400/20 bg-purple-400/10 text-purple-300 text-[11px] font-mono uppercase tracking-wider">Private Learning Project</span>
                     </div>
                     <h3 class="text-xl sm:text-2xl font-bold mb-2">AI News Headlines Bot</h3>
                     <p class="text-sm text-gray-500 mb-4">Python • Hugging Face • GenAI</p>
                     <p class="text-gray-400 mb-6 flex-grow text-sm sm:text-base">Automated pipeline transforming news text into images and videos using AI models. Scrapped News with Beautiful Soup Library, used various diffusion models such as Hugging-Face to create images and videos for the news post. Auto-generated caption via Gemini Model and auto upload on social media process was made to reduce the slow lifecycle of manual uploads on social media handles.<br> ~ An AI Learning Self Project.</p>
-                    <div class="border-t border-white/10 pt-4 flex gap-4 text-sm text-gray-500">
+                    <div class="border-t border-white/10 pt-4 flex flex-col gap-2 text-sm text-gray-500">
                         <span><i class="fas fa-magic mr-2"></i>Generative AI</span>
+                        <span class="text-xs text-purple-300/70"><i class="fas fa-lock mr-2"></i>Prototype and repository are not publicly shared.</span>
                     </div>
                 </div>
             </div>
@@ -731,64 +780,81 @@
         // type: "posts" | "articles" | "images"
         const linkedInPosts = [
             {
-                type: "posts",
-                time: "6m",
-                text: "Cursor Start vs ChatGPT Plus: My Honest Experience After Using It on a Real Project",
-                likes: 11,
-                comments: 2,
-                impressions: "223",
-                url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
-                media: {
-                    kind: "compare",
-                    title: "Cursor Start vs ChatGPT Plus",
-                    left: "Cursor Start",
-                    right: "ChatGPT Plus",
-                    badge: "Real Project Review"
-                }
-            },
-            {
                 type: "images",
-                time: "6d",
-                text: "🥳 Excited to share a new milestone! I've completed the IBM Java Developer Professional Certificate on Coursera.",
-                likes: 24,
-                comments: 5,
-                impressions: "412",
+                time: "1mo",
+                text: "🎉 Excited to share a new milestone! I'm happy to have completed the IBM Java Developer Professional Certificate offered by IBM on Coursera.",
                 url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
                 media: {
                     kind: "certificate",
                     title: "IBM Java Developer",
-                    subtitle: "Professional Certificate · Coursera",
-                    issuer: "IBM"
+                    subtitle: "Professional Certificate · 14 courses · Coursera",
+                    issuer: "IBM Skills Network"
                 }
             },
             {
                 type: "posts",
-                time: "2w",
-                text: "Building scalable backend systems taught me one thing — clean architecture isn't optional when your APIs serve millions of measurements.",
-                likes: 18,
-                comments: 3,
-                impressions: "356",
+                time: "1mo",
+                text: "🚨 Docker filling up your C: drive? Here's how I recovered 80+ GB without losing containers.",
                 url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
                 media: {
-                    kind: "insight",
-                    title: "Backend at Scale",
-                    subtitle: "Spring Boot · PostgreSQL · IoT",
-                    icon: "fa-server"
+                    kind: "storage",
+                    title: "Docker Filling Up Your C: Drive?",
+                    subtitle: "Recovered 80+ GB without losing containers",
+                    badge: "Practical Docker Fix"
+                }
+            },
+            {
+                type: "posts",
+                time: "Latest",
+                text: "🚀 Git vs Sapling: Is the future of version control already here? A practical comparison of developer experience, stacked commits, large-repository performance, error recovery, and ecosystem adoption.",
+                url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
+                media: {
+                    kind: "compare",
+                    title: "Git vs Sapling",
+                    left: "Git",
+                    right: "Sapling",
+                    leftIcon: "fa-code-branch",
+                    rightIcon: "fa-layer-group",
+                    badge: "Developer Tools"
+                }
+            },
+            {
+                type: "posts",
+                time: "Recent",
+                text: "🔐 JWT vs PASETO: Choosing the right token for secure systems. A breakdown of flexibility, safer defaults, authenticated encryption, misuse risk, and when each approach fits.",
+                url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
+                media: {
+                    kind: "compare",
+                    title: "JWT vs PASETO",
+                    left: "JWT",
+                    right: "PASETO",
+                    leftIcon: "fa-key",
+                    rightIcon: "fa-shield-halved",
+                    badge: "Backend Security"
+                }
+            },
+            {
+                type: "images",
+                time: "Jan 2026",
+                text: "🐳 Docker: A must-have skill for backend developers. Completed Docker Fundamentals and strengthened my understanding of images, containers, storage, namespaces, cgroups, and Docker Compose.",
+                url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
+                media: {
+                    kind: "certificate",
+                    title: "Docker Fundamentals",
+                    subtitle: "Containers · Images · Compose",
+                    issuer: "KodeKloud"
                 }
             },
             {
                 type: "articles",
-                time: "1mo",
-                text: "From EPAM to MultiOps — lessons from shipping enterprise Java services, GenAI pipelines, and production-ready APIs.",
-                likes: 31,
-                comments: 7,
-                impressions: "890",
+                time: "Dec 2025",
+                text: "Hosting your website is easier than you think — and it can be free. A practical guide to publishing web apps without complicated servers, FTP clients, or confusing configuration.",
                 url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
                 media: {
                     kind: "insight",
-                    title: "Engineering Journey",
-                    subtitle: "3+ Years · Java · GenAI · Cloud",
-                    icon: "fa-route"
+                    title: "Host Your App for Free",
+                    subtitle: "Simple deployment · Free hosting · Practical guide",
+                    icon: "fa-cloud-arrow-up"
                 }
             }
         ];
@@ -802,11 +868,11 @@
                             <p class="text-lg font-bold leading-snug mb-4">${media.title}</p>
                             <div class="grid grid-cols-2 gap-2">
                                 <div class="rounded-lg bg-white/5 border border-white/10 p-3 text-center">
-                                    <i class="fas fa-code text-accent mb-1"></i>
+                                    <i class="fas ${media.leftIcon || 'fa-code'} text-accent mb-1"></i>
                                     <p class="text-xs font-medium">${media.left}</p>
                                 </div>
                                 <div class="rounded-lg bg-white/5 border border-white/10 p-3 text-center">
-                                    <i class="fas fa-robot text-accent2 mb-1"></i>
+                                    <i class="fas ${media.rightIcon || 'fa-shield-halved'} text-accent2 mb-1"></i>
                                     <p class="text-xs font-medium">${media.right}</p>
                                 </div>
                             </div>
@@ -822,6 +888,23 @@
                         <p class="text-[10px] uppercase tracking-widest text-blue-300/80 mb-1">${media.issuer}</p>
                         <p class="text-lg font-bold">${media.title}</p>
                         <p class="text-xs text-gray-400 mt-1">${media.subtitle}</p>
+                    </div>`;
+            }
+            if (media.kind === "storage") {
+                return `
+                    <div class="activity-media bg-gradient-to-br from-[#082f49] via-[#0369a1] to-[#38bdf8] p-5 flex flex-col justify-between overflow-hidden relative">
+                        <div class="absolute -right-10 -bottom-12 w-40 h-40 rounded-full bg-white/10"></div>
+                        <span class="relative text-[10px] uppercase tracking-widest text-cyan-100 font-semibold">${media.badge}</span>
+                        <div class="relative">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="w-11 h-11 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center">
+                                    <i class="fab fa-docker text-2xl text-white"></i>
+                                </span>
+                                <span class="px-3 py-1 rounded-full bg-emerald-300 text-emerald-950 text-xs font-bold">80+ GB reclaimed</span>
+                            </div>
+                            <p class="text-xl font-bold leading-tight">${media.title}</p>
+                            <p class="text-sm text-cyan-100/80 mt-2">${media.subtitle}</p>
+                        </div>
                     </div>`;
             }
             return `
@@ -868,25 +951,8 @@
                         <span class="text-gray-500">… more</span>
                     </p>
                     ${mediaHTML(post.media)}
-                    <div class="px-4 py-3 flex items-center justify-between text-gray-500 text-sm border-t border-white/5 mt-auto">
-                        <div class="flex items-center gap-4">
-                            <span class="flex items-center gap-1.5 hover:text-[#0a66c2] transition-colors">
-                                <i class="far fa-thumbs-up"></i>
-                                <span class="text-xs">${post.likes}</span>
-                            </span>
-                            <span class="flex items-center gap-1.5">
-                                <i class="far fa-comment"></i>
-                                <span class="text-xs">${post.comments}</span>
-                            </span>
-                            <i class="fas fa-retweet"></i>
-                            <i class="far fa-paper-plane"></i>
-                        </div>
-                    </div>
-                    <div class="px-4 py-2.5 flex items-center justify-between text-xs border-t border-white/5 bg-white/[0.02]">
-                        <span class="text-gray-500 flex items-center gap-1.5">
-                            <i class="fas fa-chart-simple"></i> ${post.impressions} impressions
-                        </span>
-                        <span class="text-[#0a66c2] font-medium group-hover:underline">View on LinkedIn</span>
+                    <div class="px-4 py-3 flex items-center justify-end text-xs border-t border-white/5 bg-white/[0.02] mt-auto">
+                        <span class="text-[#0a66c2] font-medium group-hover:underline">View on LinkedIn <i class="fas fa-arrow-up-right-from-square ml-1"></i></span>
                     </div>
                 </a>
             `).join("");
