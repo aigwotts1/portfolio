@@ -3,7 +3,7 @@
 🚀 A modern developer portfolio showcasing backend engineering, AI workflows, and creativity.
 
 ## About
-Software Engineer with 2+ years of experience building scalable backend systems,
+Software Engineer with 3+ years of experience building scalable backend systems,
 enterprise APIs, and AI-driven automation.
 
 ## Tech Stack
