@@ -992,6 +992,30 @@
         // type: "posts" | "articles" | "images"
         const linkedInPosts = [
             {
+                type: "articles",
+                time: "Sep 15, 2026",
+                text: "Java 27 is here! &#128293; Released on September 15, 2026, it brings notable updates across security, performance, concurrency, cryptography, and the JVM.",
+                url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
+                media: {
+                    kind: "java-release",
+                    title: "Java 27 is Here",
+                    subtitle: "Security &bull; Performance &bull; Concurrency",
+                    badge: "Platform Release"
+                }
+            },
+            {
+                type: "articles",
+                time: "Sep 14, 2026",
+                text: "AWS had a pretty packed week &mdash; and AI is clearly at the center of it. A quick roundup of updates across Bedrock, Amazon Q, Kiro, Lambda, modernization, and cloud security.",
+                url: "https://www.linkedin.com/in/abhinavvashishth/recent-activity/all/",
+                media: {
+                    kind: "aws-weekly",
+                    title: "What's New on AWS This Week",
+                    subtitle: "AI &bull; Serverless &bull; Modernization",
+                    badge: "Weekly Cloud Roundup"
+                }
+            },
+            {
                 type: "images",
                 time: "1mo",
                 text: "🎉 Excited to share a new milestone! I'm happy to have completed the IBM Java Developer Professional Certificate offered by IBM on Coursera.",
@@ -1072,6 +1096,47 @@
         ];
 
         const mediaHTML = (media) => {
+            if (media.kind === "java-release") {
+                return `
+                    <div class="activity-media bg-gradient-to-br from-[#172033] via-[#1d3557] to-[#8b2d1f] p-5 flex flex-col justify-between overflow-hidden relative">
+                        <div class="absolute -right-10 -top-12 w-36 h-36 rounded-full bg-orange-400/20 blur-2xl"></div>
+                        <div class="relative flex items-center justify-between gap-3">
+                            <span class="text-[10px] uppercase tracking-widest text-orange-200 font-semibold">${media.badge}</span>
+                            <i class="fab fa-java text-2xl text-orange-300"></i>
+                        </div>
+                        <div class="relative">
+                            <div class="flex items-end gap-2 mb-2">
+                                <span class="text-4xl font-bold tracking-tighter text-white">JAVA 27</span>
+                                <span class="mb-1 px-2 py-0.5 rounded-full bg-orange-300 text-orange-950 text-[10px] font-bold">SEP 2026</span>
+                            </div>
+                            <p class="text-xs text-orange-100/80 mb-3">${media.subtitle}</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-1 rounded-md bg-white/10 border border-white/10 text-[10px]">Post-Quantum TLS</span>
+                                <span class="px-2 py-1 rounded-md bg-white/10 border border-white/10 text-[10px]">Structured Concurrency</span>
+                                <span class="px-2 py-1 rounded-md bg-white/10 border border-white/10 text-[10px]">JVM Updates</span>
+                            </div>
+                        </div>
+                    </div>`;
+            }
+            if (media.kind === "aws-weekly") {
+                return `
+                    <div class="activity-media bg-gradient-to-br from-[#081a2d] via-[#12385a] to-[#0f172a] p-5 flex flex-col justify-between overflow-hidden relative">
+                        <div class="absolute -right-12 -bottom-16 w-44 h-44 rounded-full bg-[#ff9900]/20 blur-2xl"></div>
+                        <div class="relative flex items-center justify-between gap-3">
+                            <span class="text-[10px] uppercase tracking-widest text-orange-300 font-semibold">${media.badge}</span>
+                            <i class="fab fa-aws text-3xl text-[#ff9900]"></i>
+                        </div>
+                        <div class="relative">
+                            <p class="text-xl font-bold leading-tight mb-3">${media.title}</p>
+                            <div class="grid grid-cols-2 gap-2 text-[10px]">
+                                <span class="rounded-lg bg-white/5 border border-white/10 p-2"><i class="fas fa-brain text-orange-300 mr-1"></i> Bedrock &amp; AI</span>
+                                <span class="rounded-lg bg-white/5 border border-white/10 p-2"><i class="fas fa-wand-magic-sparkles text-blue-300 mr-1"></i> Amazon Q</span>
+                                <span class="rounded-lg bg-white/5 border border-white/10 p-2"><i class="fas fa-bolt text-yellow-300 mr-1"></i> Lambda</span>
+                                <span class="rounded-lg bg-white/5 border border-white/10 p-2"><i class="fas fa-shield-halved text-emerald-300 mr-1"></i> Security</span>
+                            </div>
+                        </div>
+                    </div>`;
+            }
             if (media.kind === "compare") {
                 return `
                     <div class="activity-media bg-gradient-to-br from-[#0a1628] via-[#0d2137] to-[#1a0a2e] p-5 flex flex-col justify-between">
